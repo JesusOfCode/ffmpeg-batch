@@ -1,13 +1,22 @@
 from tkinter import *
 from tkinter.filedialog import *
-import auto
 import os
-
-pwd = os.getcwd()
+import subprocess
 
 def conversion():
     dir = folder.get()
-    auto.convert(dir, "mp4")
+
+    os.chdir(dir)
+    try:
+        os.mkdir("Converts")
+    except FileExistsError:
+        pass
+    
+    n = 0
+    for i in os.listdir(dir):
+        if os.path.isfile(i):
+            subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.{format}"])
+            n += 1
 
 def select():
     dir = askdirectory()
