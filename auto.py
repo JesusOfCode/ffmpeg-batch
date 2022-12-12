@@ -19,3 +19,4 @@ if __name__ == "__main__":
     for i in os.listdir():
         subprocess.run(["ffmpeg", "-i", i, f"out{n}.mp4"])
         n += 1
+        
