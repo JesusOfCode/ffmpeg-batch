@@ -10,8 +10,9 @@ def convert(folder, format="mp4"):
     
     n = 0
     for i in os.listdir(folder):
-        subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.{format}"])
-        n += 1
+        if os.path.isfile(i):
+            subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.{format}"])
+            n += 1
 
 if __name__ == "__main__":
     n = 0
