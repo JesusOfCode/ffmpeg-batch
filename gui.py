@@ -16,7 +16,7 @@ def conversion():
     n = 0
     for i in os.listdir(dir):
         if os.path.isfile(i):
-            subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.{format}"])
+            subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.mp4"])
             n += 1
 
 def select():
