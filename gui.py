@@ -3,8 +3,6 @@ from tkinter.filedialog import *
 import subprocess
 import os
 
-pwd = os.getcwd()
-
 def conversion():
     dir = folder.get()
     os.chdir(dir)
