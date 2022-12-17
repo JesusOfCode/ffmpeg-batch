@@ -6,22 +6,24 @@ import os
 def conversion():
     dir = folder.get()
     if dir == "":
+        print("No folder given")
         return None
+
     try:
         os.chdir(dir)
     except FileNotFoundError:
         print("Invalid folder")
         return None
+
     try:
         os.mkdir("Converts")
     except FileExistsError:
         pass
-    
-    n = 0
+
     for i in os.listdir(dir):
         if os.path.isfile(i):
-            subprocess.run(["ffmpeg", "-i", i, f".\Converts\out{n}.mp4"])
-            n += 1
+            name = os.path.basename(i).split(".")[0]
+            subprocess.run(["ffmpeg", "-i", i, f".\Converts\{name}.mp4"])
 
 def select():
     dir = askdirectory()
