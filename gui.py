@@ -5,7 +5,13 @@ import os
 
 def conversion():
     dir = folder.get()
-    os.chdir(dir)
+    if dir == "":
+        return None
+    try:
+        os.chdir(dir)
+    except FileNotFoundError:
+        print("Invalid folder")
+        return None
     try:
         os.mkdir("Converts")
     except FileExistsError:
@@ -27,14 +33,15 @@ screen = Tk()
 screen.title("Batch FFMPEG encode")
 screen.geometry("400x100")
 
-convert = Button(text = "Convert", command=conversion, font=("Calibri", 12))
+convert = Button(text = "Convert", command = conversion, font = ("Calibri", 12))
 convert.place(x = 10, y = 40)
 
-browse = Button(text = "Browse", command=select, font=("Calibri", 12))
+browse = Button(text = "Browse", command = select, font = ("Calibri", 12))
 browse.place(x = 80, y = 40)
 
 folder = StringVar()
-folderentry = Entry(textvariable = folder, font=("Calibri", 10), width=50)
+folderentry = Entry(textvariable = folder, font = ("Calibri", 10), width = 50)
+folderentry.insert(0, string="C:/")
 folderentry.place(x = 10, y = 10)
 
 screen.mainloop()
