@@ -24,6 +24,7 @@ def conversion():
         if os.path.isfile(i):
             name = os.path.basename(i).split(".")[0]
             subprocess.run(["ffmpeg", "-i", i, f".\Converts\{name}.mp4"])
+    print("DONE!")
 
 def select():
     dir = askdirectory()
